@@ -1,7 +1,3 @@
-# Приватный контекст Claude Code — не для публикации
-CLAUDE.md
-.claude/
-
 # Виртуальное окружение и кеши Python
 .venv/
 venv/
