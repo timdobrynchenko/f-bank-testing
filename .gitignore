@@ -1,0 +1,24 @@
+# Приватный контекст Claude Code — не для публикации
+CLAUDE.md
+.claude/
+
+# Виртуальное окружение и кеши Python
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Локальные отчёты pytest (в CI генерируется как артефакт)
+report.html
+.pytest_html/
+
+# IDE / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Прочее
+*.log
