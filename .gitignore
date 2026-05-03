@@ -6,7 +6,7 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 
-# Локальные отчёты pytest (в CI генерируется как артефакт)
+# Локальные отчеты pytest (в CI генерируется как артефакт)
 report.html
 .pytest_html/
 
