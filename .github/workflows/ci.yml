@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  selenium-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Start fbank server
+        run: python -m http.server 8000 --directory dist &
+
+      - name: Wait for server
+        run: |
+          for i in {1..30}; do
+            curl -sf http://localhost:8000/ > /dev/null && exit 0
+            sleep 1
+          done
+          echo "Server did not respond in 30s"
+          exit 1
+
+      - name: Run tests
+        run: pytest --html=report.html --self-contained-html
+
+      - name: Upload pytest report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-report
+          path: report.html
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: docs/bug-reports/screenshots/
