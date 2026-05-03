@@ -1,6 +1,6 @@
 # F-Bank Testing
 
-[![CI](https://github.com/USERNAME/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/USERNAME/REPO/actions/workflows/ci.yml)
+[![CI](https://github.com/timdobrynchenko/f-bank-testing/actions/workflows/ci.yml/badge.svg)](https://github.com/timdobrynchenko/f-bank-testing/actions/workflows/ci.yml)
 
 Итоговое задание по курсу тестирования. Ручное и автоматизированное тестирование псевдо-банковского сервиса F-Bank: поиск дефектов, оформление документации, Selenium-автотесты, GitHub Actions CI.
 
