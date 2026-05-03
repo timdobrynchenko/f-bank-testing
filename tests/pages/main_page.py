@@ -7,7 +7,6 @@ from tests.pages.transfer_form import TransferForm
 
 class MainPage:
     RUB_BALANCE = (By.ID, "rub-sum")
-    RUB_RESERVED = (By.ID, "rub-reserved")
     RUB_CARD = (By.XPATH, "//h2[text()='Рубли']/..")
 
     def __init__(self, driver, base_url: str):
@@ -21,12 +20,6 @@ class MainPage:
             EC.visibility_of_element_located(self.RUB_BALANCE)
         )
         return self
-
-    def rub_balance_text(self) -> str:
-        return self.driver.find_element(*self.RUB_BALANCE).text
-
-    def rub_reserved_text(self) -> str:
-        return self.driver.find_element(*self.RUB_RESERVED).text
 
     def click_rub_card(self) -> TransferForm:
         WebDriverWait(self.driver, 10).until(

@@ -18,7 +18,6 @@ class TransferForm:
         field = WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located(self.CARD_INPUT)
         )
-        field.clear()
         field.send_keys(text)
         return self
 
@@ -26,8 +25,7 @@ class TransferForm:
         field = WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located(self.AMOUNT_INPUT)
         )
-        # Поле amount имеет defaultValue=1000, поэтому простой send_keys дописывает в конец.
-        # Через native setter + dispatch input аккуратно заменяем значение целиком.
+        # defaultValue=1000 не даёт обнулить через send_keys — заменяем value через JS.
         self.driver.execute_script(
             "const setter = Object.getOwnPropertyDescriptor("
             "window.HTMLInputElement.prototype, 'value').set;"
@@ -58,12 +56,9 @@ class TransferForm:
             return False
 
     def click_transfer_and_get_alert_text(self) -> str:
-        button = WebDriverWait(self.driver, 10).until(
+        WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable(self.TRANSFER_BUTTON)
-        )
-        # JS click обходит проблему фокуса в headless Chrome,
-        # из-за которой нативные alerts иногда не всплывают через обычный click().
-        self.driver.execute_script("arguments[0].click();", button)
+        ).click()
         WebDriverWait(self.driver, 10).until(EC.alert_is_present())
         alert = self.driver.switch_to.alert
         text = alert.text
