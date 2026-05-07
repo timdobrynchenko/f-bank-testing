@@ -10,10 +10,14 @@
 
 - [Чек-лист ручного тестирования](docs/checklist.md) — 20 пунктов
 - [Тестовые сценарии](docs/test-scenarios.md) — 5 сценариев
-- Баг-репорты:
+- Баг-репорты в .md:
   - [Bug #1 — Некорректное округление комиссии](docs/bug-reports/bug-01-commission-rounding.md)
   - [Bug #2 — Принимается отрицательная сумма перевода](docs/bug-reports/bug-02-negative-amount.md)
   - [Bug #3 — Поле номера карты принимает 17 цифр](docs/bug-reports/bug-03-card-length.md)
+- Баг-репорты в Github Issues:
+  - [Bug #1 — Некорректное округление комиссии](https://github.com/timdobrynchenko/f-bank-testing/issues/1)
+  - [Bug #2 — Принимается отрицательная сумма перевода](https://github.com/timdobrynchenko/f-bank-testing/issues/2)
+  - [Bug #3 — Поле номера карты принимает 17 цифр](https://github.com/timdobrynchenko/f-bank-testing/issues/3)
 
 ## Найденные дефекты
 
